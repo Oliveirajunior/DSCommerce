@@ -30,4 +30,16 @@ public class ProductService {
         return products.map(x-> new ProductDTO(x));
     }
 
+    public ProductDTO save(ProductDTO dto){
+        Product product = new Product();
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setImgUrl(dto.getImgUrl());
+
+        var entity = repository.save(product);
+        return new ProductDTO(entity);
+    }
+
+
 }
